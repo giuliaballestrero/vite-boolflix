@@ -1,5 +1,6 @@
 <script>
 import { store } from '../store.js';
+import LangFlag from 'vue-lang-code-flags';
 console.log(store);
 import MovieComponent from './MovieComponent.vue';
 
@@ -9,6 +10,7 @@ export default {
 
   components:  {
     MovieComponent,
+    LangFlag,
   },
 
   data () {
@@ -30,7 +32,7 @@ export default {
         <h2>Title: {{ movieItem.title }}</h2>
         <div>
           <p>Original Title:{{ movieItem.original_title }}</p>
-          <p>Language: {{ movieItem.original_language }}</p>
+          <p>Language: {{ movieItem.original_language }} <lang-flag :iso="movieItem.original_language"/> </p>
           <p>Rating: {{ movieItem.vote_average }} stars</p>
         </div>
       </li>
@@ -44,7 +46,7 @@ export default {
         <h2>Title: {{ seriesItem.name }}</h2>
         <div>
           <p>Original Title:{{ seriesItem.original_name }}</p>
-          <p>Language: {{ seriesItem.original_language }}</p>
+          <p>Language: {{ seriesItem.original_language }} <lang-flag :iso="seriesItem.original_language"/></p>
           <p>Rating: {{ seriesItem.vote_average }} stars</p>
         </div>
       </li>
@@ -58,6 +60,10 @@ export default {
 
 ul {
   padding: 2rem 0;
+}
+
+lang-flag {
+  font-size: 2rem;
 }
 
 </style>
