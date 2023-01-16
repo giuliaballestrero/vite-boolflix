@@ -44,7 +44,9 @@ export default {
         <div>
           <p>Original Title:{{ moviesItem.original_title }}</p>
           <p>Language: {{ moviesItem.original_language }} <lang-flag :iso="moviesItem.original_language"/> </p>
-          <p>Rating: {{ getRating(moviesItem.vote_average) }} stars</p>
+          <p>Rating:
+            <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(moviesItem.vote_average)" />
+          </p>
         </div>
       </li>
     </ul>
@@ -59,7 +61,9 @@ export default {
         <div>
           <p>Original Title:{{ seriesItem.original_name }}</p>
           <p>Language: {{ seriesItem.original_language }} <lang-flag :iso="seriesItem.original_language"/></p>
-          <p>Rating: {{ getRating(seriesItem.vote_average) }}  stars</p>
+          <p>Rating:
+            <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(seriesItem.vote_average)" />
+          </p>
         </div>
       </li>
     </ul>
