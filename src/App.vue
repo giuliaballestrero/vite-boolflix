@@ -13,21 +13,26 @@ export default {
   data () {
     return {
       store,
+      apiKey: 'c065d34d7a17aa24d73d1521ae673433',
+      apiUri: 'https://api.themoviedb.org/3/search/movie?',
     }
   },
 
   methods: {
-    getMovies () {
-      console.log();
-      axios.get('', {
+    getMovies (searchedMovie) {
+      console.log(searchedMovie);
+      axios.get(this.apiUri, {
         params: {
+          api_key: this.apiKey,
+          query: searchedMovie,
           
         }
       })
 
 
-      .then(() => {
-        console.log();
+      .then((response) => {
+        console.log(response.data.results);
+        this.store.moviesList = response.data.results;
         
     })   
     }
@@ -42,7 +47,7 @@ export default {
 
 <template>
 
-  <HeaderApp/>
+  <HeaderApp @searchMovie="getMovies"/>
   
   <MainApp />
 
