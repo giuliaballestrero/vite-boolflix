@@ -20,8 +20,8 @@ export default {
 
     <div class="searchbar">
       <label for="site-search">Search the movie:</label>
-      <input type="text" id="site-search" v-model="store.searchedMovie">
-      <button @click="$emit('searchMovie', store.searchedMovie)">Search</button>
+      <input type="text" id="site-search" v-model="store.searchedText">
+      <button @click="$emit('searchedText', store.searchedText)">Search</button>
     </div>
 
   </section>
