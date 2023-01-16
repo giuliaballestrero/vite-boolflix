@@ -16,7 +16,17 @@ export default {
   data () {
     return {
       store,
+      img: 'https://image.tmdb.org/t/p/w780/'
     }
+  },
+
+  methods: {
+    getRating (ratingValue) {
+      const rating = Math.ceil(ratingValue / 2);
+      console.log(rating)
+      return rating;
+    }
+    
   },
 }
 
@@ -28,12 +38,13 @@ export default {
     <ul>
       <h1>Movies</h1>
       <h2> {{store.moviesList.length}} Movies found</h2>
-      <li v-for="movieItem in store.moviesList">
-        <h2>Title: {{ movieItem.title }}</h2>
+      <li v-for="moviesItem in store.moviesList">
+        <h2>Title: {{ moviesItem.title }}</h2>
+        <img :src="this.img + moviesItem.backdrop_path" :alt="moviesItem.title">
         <div>
-          <p>Original Title:{{ movieItem.original_title }}</p>
-          <p>Language: {{ movieItem.original_language }} <lang-flag :iso="movieItem.original_language"/> </p>
-          <p>Rating: {{ movieItem.vote_average }} stars</p>
+          <p>Original Title:{{ moviesItem.original_title }}</p>
+          <p>Language: {{ moviesItem.original_language }} <lang-flag :iso="moviesItem.original_language"/> </p>
+          <p>Rating: {{ moviesItem.vote_average }} stars</p>
         </div>
       </li>
     </ul>
@@ -44,10 +55,11 @@ export default {
       <h2> {{store.seriesList.length}} TV Series found</h2>
       <li v-for="seriesItem in store.seriesList">
         <h2>Title: {{ seriesItem.name }}</h2>
+        <img :src="this.img + seriesItem.backdrop_path" :alt="seriesItem.title">
         <div>
           <p>Original Title:{{ seriesItem.original_name }}</p>
           <p>Language: {{ seriesItem.original_language }} <lang-flag :iso="seriesItem.original_language"/></p>
-          <p>Rating: {{ seriesItem.vote_average }} stars</p>
+          <p>Rating: {{ getRating(seriesItem.vote_average) }}  stars</p>
         </div>
       </li>
     </ul>
@@ -60,10 +72,7 @@ export default {
 
 ul {
   padding: 2rem 0;
-}
-
-lang-flag {
-  font-size: 2rem;
+  
 }
 
 </style>
