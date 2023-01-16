@@ -44,7 +44,7 @@ export default {
         <div>
           <p>Original Title:{{ moviesItem.original_title }}</p>
           <p>Language: {{ moviesItem.original_language }} <lang-flag :iso="moviesItem.original_language"/> </p>
-          <p>Rating: {{ moviesItem.vote_average }} stars</p>
+          <p>Rating: {{ getRating(moviesItem.vote_average) }} stars</p>
         </div>
       </li>
     </ul>
