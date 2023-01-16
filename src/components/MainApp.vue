@@ -46,6 +46,7 @@ export default {
           <p>Language: {{ moviesItem.original_language }} <lang-flag :iso="moviesItem.original_language"/> </p>
           <p>Rating:
             <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(moviesItem.vote_average)" />
+            <span v-if="getRating(moviesItem.vote_average) == 0">No ratings found</span>
           </p>
         </div>
       </li>
@@ -63,6 +64,7 @@ export default {
           <p>Language: {{ seriesItem.original_language }} <lang-flag :iso="seriesItem.original_language"/></p>
           <p>Rating:
             <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(seriesItem.vote_average)" />
+            <span v-if="getRating(seriesItem.vote_average) == 0">No ratings found</span>
           </p>
         </div>
       </li>
