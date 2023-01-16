@@ -73,7 +73,7 @@ export default {
 <template>
 
   <HeaderApp @searchedText="searchAll"/>
-  
+  <hr>
   <MainApp />
 
 </template>
@@ -82,5 +82,9 @@ export default {
 
 @use './styles/general.scss' as *;
 @use './styles/partials/_variables.scss' as *;
+
+hr {
+  color: grey;
+}
 
 </style>

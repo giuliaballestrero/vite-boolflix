@@ -43,7 +43,10 @@ export default {
         <img :src="this.img + moviesItem.backdrop_path" :alt="moviesItem.title">
         <div>
           <p>Original Title:{{ moviesItem.original_title }}</p>
-          <p>Language: {{ moviesItem.original_language }} <lang-flag :iso="moviesItem.original_language"/> </p>
+          <p>Language: {{ moviesItem.original_language }} 
+           <!--Da usare dopo // <lang-flag :iso="moviesItem.original_language"/> //-->
+           <img :src="'/src/assets/img/' + moviesItem.original_language + '.png'" alt="" class="my-flag">
+          </p>
           <p>Rating:
             <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(moviesItem.vote_average)" />
             <span v-if="getRating(moviesItem.vote_average) == 0">No ratings found</span>
@@ -58,10 +61,13 @@ export default {
       <h2> {{store.seriesList.length}} TV Series found</h2>
       <li v-for="seriesItem in store.seriesList">
         <h2>Title: {{ seriesItem.name }}</h2>
-        <img :src="this.img + seriesItem.backdrop_path" :alt="seriesItem.title">
+        <img :src="this.img + seriesItem.backdrop_path" alt="seriesItem.title">
         <div>
           <p>Original Title:{{ seriesItem.original_name }}</p>
-          <p>Language: {{ seriesItem.original_language }} <lang-flag :iso="seriesItem.original_language"/></p>
+          <p>Language: {{ seriesItem.original_language }} 
+            <!--Da usare dopo // <lang-flag :iso="seriesItem.original_language"/> //-->
+            <img :src="'/src/assets/img/' + seriesItem.original_language + '.png'" alt="" class="my-flag">
+          </p>
           <p>Rating:
             <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(seriesItem.vote_average)" />
             <span v-if="getRating(seriesItem.vote_average) == 0">No ratings found</span>
@@ -76,9 +82,17 @@ export default {
 @use '../styles/general.scss' as *;
 @use '../styles/partials/_variables.scss' as *;
 
+.main-wrapper {
+  color: white;
+}
+
 ul {
   padding: 2rem 0;
   
+}
+
+.my-flag {
+  width: 30px;
 }
 
 </style>
