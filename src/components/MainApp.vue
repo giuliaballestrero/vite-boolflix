@@ -104,28 +104,32 @@ export default {
 .single-card {
     width: calc(100% / 5 - 1rem);
     margin: 2rem .5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid white;
+    box-shadow: rgba(255, 255, 255, 0.479) 0px 0px 5px 0px, rgba(250, 250, 250, 0.1) 0px 0px 1px 0px;
+    height: 700px;
 
     img {
       width: 100%;
       height: 100%;
     }
+
     .details{
       display: none;
+      padding: 1.5rem;
+      height: 100%;
 
       h2 {
-      padding: 2rem;
+      padding-top: 2rem;
+      font-size: 1rem;
       }
 
       h3 {
         color: grey;
+        padding: 1rem 0;
+        font-size: .7rem;
       }
 
       p {
-        font-size: 1.5rem;
+        font-size: 1rem;
         padding: 1rem;
       }
     }
@@ -139,10 +143,13 @@ ul {
 
   li:hover img {
     display: none;
+
   }
 
   li:hover .details {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
 }

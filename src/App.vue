@@ -83,8 +83,5 @@ export default {
 @use './styles/general.scss' as *;
 @use './styles/partials/_variables.scss' as *;
 
-hr {
-  color: grey;
-}
 
 </style>
