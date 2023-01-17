@@ -16,7 +16,8 @@ export default {
   data () {
     return {
       store,
-      img: 'https://image.tmdb.org/t/p/w342/'
+      img: 'https://image.tmdb.org/t/p/w342/',
+      
     }
   },
 
@@ -25,10 +26,20 @@ export default {
       const rating = Math.ceil(ratingValue / 2);
       console.log(rating)
       return rating;
-    }
+    },
+
+    getGenreName(id) {
+      for (let i = 0; i < store.genresList.length; i++) {
+        if (store.genresList[i].id === id) {
+          return store.genresList[i].name
+        } else {
+          return "Not found"
+        }
+      }
+      }
+    },
     
-  },
-}
+  }
 
 </script>
 
@@ -55,7 +66,11 @@ export default {
             <p>
               Overview:  {{ moviesItem.overview}} 
             </p>
-            <p> Genre: {{ moviesItem.genre_ids }}</p>
+            <p> Genre: 
+              <a href="#" v-for="genre in moviesItem.genre_ids">
+                {{ getGenreName(genre) }}
+              </a>
+            </p>
           </div>
         </li>
     </ul>
@@ -79,6 +94,11 @@ export default {
               <span v-if="getRating(seriesItem.vote_average) == 0">No ratings found</span>
             </p>
             <p>Overview: {{ seriesItem.overview }} </p>
+            <p> Genre:
+              <a href="#" v-for="genre in seriesItem.genre_ids">
+                {{ getGenreName(genre) }}
+              </a>
+            </p>
           </div>
         </li>
     </ul>
@@ -136,7 +156,16 @@ export default {
 
       p {
         font-size: 1rem;
-        padding: 1rem;
+        padding: 1.5rem;
+
+          a {
+            padding: .3rem 1rem;
+            margin-right: 1rem;
+            border: .5px solid white;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+          }
       }
     }
 
