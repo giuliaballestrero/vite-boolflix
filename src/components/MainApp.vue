@@ -39,9 +39,10 @@ export default {
     <h2> {{store.moviesList.length}} Movies found</h2>
     <ul>
         <li v-for="moviesItem in store.moviesList" class="single-card">
-          <h2>Title: {{ moviesItem.title }}</h2>
+          
           <img :src="this.img + moviesItem.poster_path" :alt="moviesItem.title">
-          <div>
+          <div class="details">
+            <h2>Title: {{ moviesItem.title }}</h2>
             <h3>Original Title:{{ moviesItem.original_title }}</h3>
             <h4>Language: {{ moviesItem.original_language }} 
             <lang-flag :iso="moviesItem.original_language"/>
@@ -60,9 +61,10 @@ export default {
     <h2> {{store.seriesList.length}} TV Series found</h2>
     <ul>
         <li v-for="seriesItem in store.seriesList" class="single-card">
-          <h2>Title: {{ seriesItem.name }}</h2>
-          <img :src="this.img + seriesItem.poster_path" alt="seriesItem.title">
-          <div>
+          
+          <img :src="this.img + seriesItem.poster_path" :alt="seriesItem.name">
+          <div class="details">
+            <h2>Title: {{ seriesItem.name }}</h2>
             <h3>Original Title:{{ seriesItem.original_name }}</h3>
             <h4>Language: {{ seriesItem.original_language }} 
               <lang-flag :iso="seriesItem.original_language"/> 
@@ -111,26 +113,21 @@ export default {
       width: 100%;
       height: 100%;
     }
-
-    h2,
-    h3,
-    h4,
-    p {
+    .details{
       display: none;
-    }
-    
 
-    h2 {
+      h2 {
       padding: 2rem;
-    }
+      }
 
-    h3 {
-      color: grey;
-    }
+      h3 {
+        color: grey;
+      }
 
-    p {
-      font-size: 1.5rem;
-      padding: 1rem;
+      p {
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
     }
 
 }
@@ -139,6 +136,14 @@ ul {
   padding: 2rem 0;
   display: flex;
   flex-wrap: wrap;
+
+  li:hover img {
+    display: none;
+  }
+
+  li:hover .details {
+    display: block;
+  }
   
 }
 
