@@ -40,12 +40,12 @@ export default {
     <ul>
         <li v-for="moviesItem in store.moviesList" class="single-card">
           <h2>Title: {{ moviesItem.title }}</h2>
-          <img :src="this.img + moviesItem.backdrop_path" :alt="moviesItem.title">
+          <img :src="this.img + moviesItem.poster_path" :alt="moviesItem.title">
           <div>
             <h3>Original Title:{{ moviesItem.original_title }}</h3>
             <h4>Language: {{ moviesItem.original_language }} 
             <lang-flag :iso="moviesItem.original_language"/>
-            <!--Alternativa img locali <img :src="'/src/assets/img/' + moviesItem.original_language + '.png'" alt="" class="my-flag">-->
+            <!--Alternativa<img :src="'/src/assets/img/' + moviesItem.original_language + '.png'" alt="" class="my-flag">-->
             </h4>
             <p>Rating:
               <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(moviesItem.vote_average)" />
@@ -61,7 +61,7 @@ export default {
     <ul>
         <li v-for="seriesItem in store.seriesList" class="single-card">
           <h2>Title: {{ seriesItem.name }}</h2>
-          <img :src="this.img + seriesItem.backdrop_path" alt="seriesItem.title">
+          <img :src="this.img + seriesItem.poster_path" alt="seriesItem.title">
           <div>
             <h3>Original Title:{{ seriesItem.original_name }}</h3>
             <h4>Language: {{ seriesItem.original_language }} 
@@ -100,8 +100,8 @@ export default {
 }
 
 .single-card {
-    width: calc(100% / 5 - 4rem);
-    margin: 2rem;
+    width: calc(100% / 5 - 1rem);
+    margin: 2rem .5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -109,7 +109,16 @@ export default {
 
     img {
       width: 100%;
+      height: 100%;
     }
+
+    h2,
+    h3,
+    h4,
+    p {
+      display: none;
+    }
+    
 
     h2 {
       padding: 2rem;
