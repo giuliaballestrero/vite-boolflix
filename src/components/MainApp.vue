@@ -52,6 +52,9 @@ export default {
               <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(moviesItem.vote_average)" />
               <span v-if="getRating(moviesItem.vote_average) == 0">No ratings found</span>
             </p>
+            <p>
+              Overview:  {{ moviesItem.overview}} 
+            </p>
           </div>
         </li>
     </ul>
@@ -74,6 +77,7 @@ export default {
               <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(seriesItem.vote_average)" />
               <span v-if="getRating(seriesItem.vote_average) == 0">No ratings found</span>
             </p>
+            <p>Overview: {{ seriesItem.overview }} </p>
           </div>
         </li>
     </ul>
