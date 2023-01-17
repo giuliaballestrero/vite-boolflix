@@ -32,8 +32,6 @@ export default {
       for (let i = 0; i < store.genresList.length; i++) {
         if (store.genresList[i].id === id) {
           return store.genresList[i].name
-        } else {
-          return "Not found"
         }
       }
       }
@@ -75,6 +73,7 @@ export default {
         </li>
     </ul>
     <hr>
+
     <!--Serie TV-->
     <h1>Tv Series</h1>
     <h2> {{store.seriesList.length}} TV Series found</h2>
@@ -102,7 +101,7 @@ export default {
           </div>
         </li>
     </ul>
-   
+    <hr>
   </section>
 </template>
 
@@ -157,10 +156,13 @@ export default {
       p {
         font-size: 1rem;
         padding: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
 
           a {
             padding: .3rem 1rem;
             margin-right: 1rem;
+            margin-bottom: 1rem;
             border: .5px solid white;
             border-radius: 15px;
             text-decoration: none;
