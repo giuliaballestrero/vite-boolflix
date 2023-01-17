@@ -16,6 +16,8 @@ export default {
       apiKey: 'c065d34d7a17aa24d73d1521ae673433',
       moviesApiUri: 'https://api.themoviedb.org/3/search/movie?',
       seriesApiUri: 'https://api.themoviedb.org/3/search/tv?',
+      movieGenreList: 'https://api.themoviedb.org/3/genre/movie/list?',
+      seriesGenreList: 'https://api.themoviedb.org/3/genre/tv/list?',
     }
   },
 

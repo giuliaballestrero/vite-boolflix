@@ -55,6 +55,7 @@ export default {
             <p>
               Overview:  {{ moviesItem.overview}} 
             </p>
+            <p> Genre: {{ moviesItem.genre_ids }}</p>
           </div>
         </li>
     </ul>
@@ -93,15 +94,15 @@ export default {
   color: white;
   padding: 0 2rem;
   text-align: center;
-  h1,
-  h2 {
-    text-transform: uppercase;
-  }
+    h1,
+    h2 {
+      text-transform: uppercase;
+    }
 
-  h1 {
-  padding-top: 3rem;
-  font-size: 3rem;
-  }
+    h1 {
+    padding-top: 3rem;
+    font-size: 3rem;
+    }
 
 }
 
@@ -120,6 +121,7 @@ export default {
       display: none;
       padding: 1.5rem;
       height: 100%;
+      overflow: scroll;
 
       h2 {
       padding-top: 2rem;

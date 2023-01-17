@@ -32,11 +32,10 @@ export default {
 @use '../styles/partials/_variables.scss' as *;
 .header-container {
 
-  background-color: black;
+  background-color: #141414;
   color: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 0 2rem;
 
     h1 {
