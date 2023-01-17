@@ -34,6 +34,7 @@ export default {
           return store.genresList[i].name
         }
       }
+      return "Not Found"
       }
     },
     
