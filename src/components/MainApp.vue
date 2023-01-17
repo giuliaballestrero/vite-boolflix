@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       store,
-      img: 'https://image.tmdb.org/t/p/w780/'
+      img: 'https://image.tmdb.org/t/p/w342/'
     }
   },
 
@@ -35,46 +35,47 @@ export default {
 <template>
   <section class="main-wrapper">
     <!--Film-->
+    <h1>Movies</h1>
+    <h2> {{store.moviesList.length}} Movies found</h2>
     <ul>
-      <h1>Movies</h1>
-      <h2> {{store.moviesList.length}} Movies found</h2>
-      <li v-for="moviesItem in store.moviesList">
-        <h2>Title: {{ moviesItem.title }}</h2>
-        <img :src="this.img + moviesItem.backdrop_path" :alt="moviesItem.title">
-        <div>
-          <p>Original Title:{{ moviesItem.original_title }}</p>
-          <p>Language: {{ moviesItem.original_language }} 
-           <!--Da usare dopo // <lang-flag :iso="moviesItem.original_language"/> //-->
-           <img :src="'/src/assets/img/' + moviesItem.original_language + '.png'" alt="" class="my-flag">
-          </p>
-          <p>Rating:
-            <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(moviesItem.vote_average)" />
-            <span v-if="getRating(moviesItem.vote_average) == 0">No ratings found</span>
-          </p>
-        </div>
-      </li>
+        <li v-for="moviesItem in store.moviesList" class="single-card">
+          <h2>Title: {{ moviesItem.title }}</h2>
+          <img :src="this.img + moviesItem.backdrop_path" :alt="moviesItem.title">
+          <div>
+            <h3>Original Title:{{ moviesItem.original_title }}</h3>
+            <h4>Language: {{ moviesItem.original_language }} 
+            <lang-flag :iso="moviesItem.original_language"/>
+            <!--Alternativa img locali <img :src="'/src/assets/img/' + moviesItem.original_language + '.png'" alt="" class="my-flag">-->
+            </h4>
+            <p>Rating:
+              <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(moviesItem.vote_average)" />
+              <span v-if="getRating(moviesItem.vote_average) == 0">No ratings found</span>
+            </p>
+          </div>
+        </li>
     </ul>
-
+    <hr>
     <!--Serie TV-->
+    <h1>Tv Series</h1>
+    <h2> {{store.seriesList.length}} TV Series found</h2>
     <ul>
-      <h1>Tv Series</h1>
-      <h2> {{store.seriesList.length}} TV Series found</h2>
-      <li v-for="seriesItem in store.seriesList">
-        <h2>Title: {{ seriesItem.name }}</h2>
-        <img :src="this.img + seriesItem.backdrop_path" alt="seriesItem.title">
-        <div>
-          <p>Original Title:{{ seriesItem.original_name }}</p>
-          <p>Language: {{ seriesItem.original_language }} 
-            <!--Da usare dopo // <lang-flag :iso="seriesItem.original_language"/> //-->
-            <img :src="'/src/assets/img/' + seriesItem.original_language + '.png'" alt="" class="my-flag">
-          </p>
-          <p>Rating:
-            <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(seriesItem.vote_average)" />
-            <span v-if="getRating(seriesItem.vote_average) == 0">No ratings found</span>
-          </p>
-        </div>
-      </li>
+        <li v-for="seriesItem in store.seriesList" class="single-card">
+          <h2>Title: {{ seriesItem.name }}</h2>
+          <img :src="this.img + seriesItem.backdrop_path" alt="seriesItem.title">
+          <div>
+            <h3>Original Title:{{ seriesItem.original_name }}</h3>
+            <h4>Language: {{ seriesItem.original_language }} 
+              <lang-flag :iso="seriesItem.original_language"/> 
+              <!--Alternativa img locali// <img :src="'/src/assets/img/' + seriesItem.original_language + '.png'" alt="" class="my-flag">//-->
+            </h4>
+            <p>Rating:
+              <font-awesome-icon icon="fa-solid fa-star" v-for=" n in getRating(seriesItem.vote_average)" />
+              <span v-if="getRating(seriesItem.vote_average) == 0">No ratings found</span>
+            </p>
+          </div>
+        </li>
     </ul>
+   
   </section>
 </template>
 
@@ -84,15 +85,56 @@ export default {
 
 .main-wrapper {
   color: white;
+  padding: 0 2rem;
+  text-align: center;
+  h1,
+  h2 {
+    text-transform: uppercase;
+  }
+
+  h1 {
+  padding-top: 3rem;
+  font-size: 3rem;
+  }
+
+}
+
+.single-card {
+    width: calc(100% / 5 - 4rem);
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid white;
+
+    img {
+      width: 100%;
+    }
+
+    h2 {
+      padding: 2rem;
+    }
+
+    h3 {
+      color: grey;
+    }
+
+    p {
+      font-size: 1.5rem;
+      padding: 1rem;
+    }
+
 }
 
 ul {
   padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
   
 }
 
-.my-flag {
+/*.my-flag {
   width: 30px;
-}
+}*/
 
 </style>

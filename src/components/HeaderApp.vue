@@ -54,6 +54,7 @@ export default {
         input,
         button {
           margin-right: 2rem;
+          text-transform: uppercase;
         }
 
         label {
@@ -72,6 +73,7 @@ export default {
           background-color: red;
           border: none;
           border-radius: 5px;
+
         }
     }
 }
