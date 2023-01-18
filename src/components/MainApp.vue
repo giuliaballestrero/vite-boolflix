@@ -130,7 +130,7 @@ export default {
     width: calc(100% / 5 - 1rem);
     margin: 2rem .5rem;
     box-shadow: rgba(255, 255, 255, 0.479) 0px 0px 5px 0px, rgba(250, 250, 250, 0.1) 0px 0px 1px 0px;
-    height: 700px;
+    height: 550px;
 
     img {
       width: 100%;
